@@ -16,6 +16,8 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Hello! Welcome to my homepage</Text>
+        <Text>Hello! Welcome to my homepage</Text>
+        <Text>Hello! Welcome to my homepage</Text>
       </View>
     );
   }
@@ -25,6 +27,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderWidth : 4,
+    borderColor : '#228B22',
+    borderRadius : 10
   }
 });

@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderWidth : 4,
+    borderColor : '#228B22',
+    borderRadius : 10
   }
 });
