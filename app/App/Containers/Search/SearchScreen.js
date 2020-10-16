@@ -1,8 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ToastAndroid } from "react-native";
 import React, { Component } from "react";
 import { MenuButton, Logo } from "../../Components/Header/Header";
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-
 export default class SearchScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -14,6 +13,7 @@ export default class SearchScreen extends React.Component {
   };
   render() {
     return (
+      <View style={{ paddingTop: 50, flex: 1 }}>
       <Calendar
         // Initially visible month. Default = Date()
         current={'2020-10-14'}
@@ -22,7 +22,12 @@ export default class SearchScreen extends React.Component {
         // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
         maxDate={'2020-12-31'}
         // Handler which gets executed on day press. Default = undefined
-        onDayPress={(day) => {console.log('selected day', day)}}
+        onDayPress={(day) => {    console.log('selected day', day)
+        ToastAndroid.showWithGravity(
+          day.dateString,
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+        );   }}
         // Handler which gets executed on day long press. Default = undefined
         onDayLongPress={(day) => {console.log('selected day', day)}}
         // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
@@ -55,8 +60,9 @@ export default class SearchScreen extends React.Component {
         // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
         disableAllTouchEventsForDisabledDays={true}
         /** Replace default month and year title with custom one. the function receive a date as parameter. */
-        renderHeader={(date) => {/*Return JSX*/}}
+        //renderHeader={(date) => {/*Return JSX*/}}
       />
+      </View>
     );
   }
 }
