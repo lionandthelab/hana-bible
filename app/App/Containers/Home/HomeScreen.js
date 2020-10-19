@@ -1,7 +1,9 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList, SafeAreaView } from "react-native";
 import React, { Component } from "react";
 import { MenuButton, Logo } from "../../Components/Header/Header";
 import Swiper from 'react-native-swiper'
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -14,7 +16,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <Swiper style={styles.wrapper} showsButtons={true} horizontal={true}>
+      <Swiper style={styles.wrapper} showsButtons={true}  bounces={false}>
       <View style={styles.container}>
         <Text>1</Text>
       </View>

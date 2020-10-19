@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, AsyncStorage, ScrollView , SafeAreaView  } from
 import React, { Component } from "react";
 import { MenuButton, Logo } from "../../Components/Header/Header";
 import Swiper from 'react-native-swiper';
-import { get_bible } from './get_bible.js';
+import { get_bible, get_date } from './get_bible.js';
 const bible = require('./GAE_bible_final.json');
 const test = bible['gen']['1'];
 const test1 = get_bible('gen', '1'); 
@@ -16,9 +16,7 @@ class BibleCast extends React.Component{
       </Text>
     );
   }
-}
-
-
+} 
 
 export default class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -30,18 +28,31 @@ export default class ProfileScreen extends React.Component {
     };
   };
   render() {
-    const menus = [get_bible('gen', '1'), get_bible('gen', '2'), get_bible('gen', '3'), get_bible('gen', '4')]
-    const menuList = menus.map((menu, index) => (
+    const today = new Date();
+    today.toISOString().substring(0, 10);
+    var tmp = today.toISOString().substring(0, 10).split('-');
+    console.log(tmp);
+    const menus = get_date(String(Number('01')),'1');
+    const menuList = menus.map((menu,key) => (
       <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollView} key = {index}>
-          <Text>{menu}</Text>
+        <ScrollView style={styles.scrollView}>
+          
+          {
+        (function(){
+          if(key === 0) 
+            return(<Text>"hello world"</Text>);
+          else
+          return(<Text>123</Text>);
+        })()
+      }
+          
         </ScrollView>
       </SafeAreaView>
       ));
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
-        {menuList}
-    </Swiper>
+      {menuList}
+      </Swiper>
     );
   }
 }
